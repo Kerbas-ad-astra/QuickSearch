@@ -1,6 +1,6 @@
 ﻿/* 
 QuickSearch
-Copyright 2015 Malah
+Copyright 2016 Malah
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -33,6 +33,7 @@ namespace QuickSearch {
 		private static string DeleteTexturePath = QuickSearch.MOD + "/Textures/delete";
 		internal static Texture2D DeleteTexture;
 		#endif
+
 		private static GUIStyle TextField;
 
 		internal static bool Ready = false;
@@ -73,14 +74,14 @@ namespace QuickSearch {
 			SaveTexture = GameDatabase.Instance.GetTexture (SaveTexturePath, false);
 			DeleteTexture = GameDatabase.Instance.GetTexture (DeleteTexturePath, false);
 			#endif
-			TextField = HighLogic.Skin.textField;
+			TextField = new GUIStyle(HighLogic.Skin.textField);
 			TextField.stretchWidth = true;
 			TextField.fixedHeight = 20;
 			TextField.alignment = TextAnchor.MiddleCenter;
 			Ready = true;
-			QuickSearch.Log ("GUI Init");
+			QuickSearch.Log ("GUI Init", true);
 		}
-
+			
 		internal static void OnGUI() {
 			GUI.skin = HighLogic.Skin;
 			PartCategorizer.Category _currentFilter = QCategory.CurrentFilter;
